@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 2.8)
+
+project(IoTLogger)
+
+find_package(Qt5Core CONFIG REQUIRED)
+find_package(Qt5Widgets CONFIG REQUIRED)
+INCLUDE_DIRECTORIES(${Qt5Widgets_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS})
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+
+add_executable(${PROJECT_NAME} "main.cpp" "DB_dasa.cpp" "DB_dasa.h"
+"Muestra.cpp" "Muestra.h" "Posicion.cpp"
+"Posicion.h" "DASA_app.cpp" "DASA_app_app.h")
+
+target_link_libraries (${DASA} sqlite3 mysqlclient Qt5::Core )
+
+add_executable(${DASA}_gui  "DB_dasa.h"
+"Muestra.cpp" "Muestra.h" "Posicion.cpp"
+"Posicion.h" "ventppal.cpp" "ventppal.ui")
+
+target_link_libraries (${DASA}_gui sqlite3 Qt5::Core Qt5::Widgets )
